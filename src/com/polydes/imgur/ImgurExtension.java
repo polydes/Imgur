@@ -1,4 +1,4 @@
-package stencyl.ext.polydes.imgur;
+package com.polydes.imgur;
 
 import java.awt.Color;
 import java.awt.Desktop;
