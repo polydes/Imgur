@@ -87,21 +87,10 @@ public class ImgurExtension extends BaseExtension
 		isInGameCenter = false;
 //		gameCenterName = "Imgur";
 		
-		try
-		{
-			IMGUR_REFRESH_TOKEN = (String) properties.get("refresh");
-			IMGUR_ACCESS_TOKEN = (String) properties.get("access");
-			didUserAuth = Boolean.parseBoolean((String) properties.get("authed"));
-			expirationTime = Long.parseLong(properties.get("expiration").toString());
-		}
-		catch(NullPointerException ex)
-		{
-			log.warn("Couldn't load Imgur extension properties (Unset).");
-		}
-		catch(NumberFormatException ex)
-		{
-			log.warn("Couldn't load Imgur extension properties (Bad number format).");
-		}
+		IMGUR_REFRESH_TOKEN = readStringProp("refresh", null);
+		IMGUR_ACCESS_TOKEN = readStringProp("access", null);
+		didUserAuth = readBoolProp("authed", false);
+		expirationTime = readLongProp("expiration", 0L);
 	}
 
 	/*
