@@ -430,16 +430,17 @@ public class ImgurExtension extends BaseExtension
 
 				log.info("Finished sending...");
 				// capture the XML response as a raw string
-				BufferedReader in = new BufferedReader(new InputStreamReader(
-						conn.getInputStream()));
-				String line;
-				while ((line = in.readLine()) != null)
+				try(BufferedReader in = new BufferedReader(new InputStreamReader(
+						conn.getInputStream())))
 				{
-					log.info(line);
-					// copy the response before we lose our temporary sting "line"
-					str = new String(line);
+					String line;
+					while ((line = in.readLine()) != null)
+					{
+						log.info(line);
+						// copy the response before we lose our temporary sting "line"
+						str = new String(line);
+					}
 				}
-				in.close();
 //				log.info(str);
 				
 				// JSON parsing always fails, so just get the stupid token substring from the string myself. Total hack :P
@@ -755,17 +756,18 @@ public class ImgurExtension extends BaseExtension
 				repaint();
 
 				// capture the XML response as a raw string
-				BufferedReader in = new BufferedReader(new InputStreamReader(
-						conn.getInputStream()));
-				String line;
-				while ((line = in.readLine()) != null)
+				try(BufferedReader in = new BufferedReader(new InputStreamReader(
+						conn.getInputStream())))
 				{
-					log.info(line);
-					
-					// copy the XML response before we lose our temporary sting "line"
-					strURL = new String(line);
+					String line;
+					while ((line = in.readLine()) != null)
+					{
+						log.info(line);
+						
+						// copy the XML response before we lose our temporary sting "line"
+						strURL = new String(line);
+					}
 				}
-				in.close();
 			}
 			catch (Exception e)
 			{
@@ -823,16 +825,17 @@ public class ImgurExtension extends BaseExtension
 
 			log.info("Finished sending...");
 			// capture the XML response as a raw string
-			BufferedReader in = new BufferedReader(new InputStreamReader(
-					conn.getInputStream()));
-			String line;
-			while ((line = in.readLine()) != null)
+			try(BufferedReader in = new BufferedReader(new InputStreamReader(
+					conn.getInputStream())))
 			{
-				log.info(line);
-				// copy the response before we lose our temporary sting "line"
-				str = new String(line);
+				String line;
+				while ((line = in.readLine()) != null)
+				{
+					log.info(line);
+					// copy the response before we lose our temporary sting "line"
+					str = new String(line);
+				}
 			}
-			in.close();
 //			log.info(str);
 			
 			/*
